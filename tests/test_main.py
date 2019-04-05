@@ -1,7 +1,7 @@
 """ app.main.GrandPyBot test """
 
 # -*- coding: utf-8 -*-
-from app.main import GrandPyBot
+from main import GrandPyBot
 
 class TestGrandPyBot():
 

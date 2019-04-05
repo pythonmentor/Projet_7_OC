@@ -8,6 +8,7 @@ class Parser_Question:
     def clean(self):
         self.transform_to_lowercase()
         self.remove_special
+        self.remove_accents
         self.delete_spaces
 
     def transform_to_lowercase(self):
@@ -15,12 +16,19 @@ class Parser_Question:
         return self.sentence
 
     def remove_special(self, sentence):
-        """"""
-        intab = ",?;.:/!"
-        outab = "       "
+        """
+        """
+        intab = ",?;.:/!-_"
+        outab = "         "
         delete = str.maketrans(intab, outab)
         self.sentence = self.sentence.translate(delete)
         return self.sentence
+
+    def remove_accents(self, sentence):
+        print("return")
+        sentence = str.maketrans("éèêëãàäâåîïìöôòõñûüÿ", "eeeeaaaaaiiioooonuuy")
+        "éèêëãàäâåîïìöôòõñûüÿ".translate(sentence)
+        return sentence
 
     def delete_spaces(self, sentence):
         remove_spaces = sentence.strip().replace("  ", " ")
