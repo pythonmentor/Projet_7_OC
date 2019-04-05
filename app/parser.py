@@ -16,13 +16,13 @@ class Parser_Question:
 
     def remove_special(self, sentence):
         """"""
-        intab = ",?;.:/!§*µ%$£¤€}=+])°@\_`|-[({'#~²&<>"
-        outab = "                                     "
+        intab = ",?;.:/!"
+        outab = "       "
         delete = str.maketrans(intab, outab)
         self.sentence = self.sentence.translate(delete)
 
     def delete_spaces(self, sentence):
-        remove_spaces = sentence.strip()
+        remove_spaces = sentence.strip().replace("  ", " ")
         return remove_spaces
 
     def remove_stop_words(self):

@@ -10,5 +10,5 @@ class TestParser:
         assert ab.transform_to_lowercase() == "test"
         
     def test_delete_spaces(self):
-        ab = parser.Parser_Question("   bla    bla   ")
-        assert ab.delete_spaces == "bla bla"
+        ab = parser.Parser_Question("   bla bla   ")
+        assert ab.delete_spaces("   bla bla   ") == "bla bla"
