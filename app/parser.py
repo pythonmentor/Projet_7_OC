@@ -20,6 +20,7 @@ class Parser_Question:
         outab = "       "
         delete = str.maketrans(intab, outab)
         self.sentence = self.sentence.translate(delete)
+        return self.sentence
 
     def delete_spaces(self, sentence):
         remove_spaces = sentence.strip().replace("  ", " ")
