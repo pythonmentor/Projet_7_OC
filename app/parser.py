@@ -1,22 +1,29 @@
 import json
 
-class Parser:
+class Parser_Question:
 
     def __init__(self, sentence):
         self.sentence = sentence
 
     def clean(self):
         self.transform_to_lowercase()
-        self.remove_apostrophes
-    
-    def transform_to_lowercase(self, sentence):
-        self.sentence = str(sentence)
+        self.remove_special
+        self.delete_spaces
+
+    def transform_to_lowercase(self):
         self.sentence = self.sentence.lower()
         return self.sentence
 
-    def remove_apostrophes(self):
+    def remove_special(self, sentence):
         """"""
-        pass
+        intab = ",?;.:/!§*µ%$£¤€}=+])°@\_`|-[({'#~²&<>"
+        outab = "                                     "
+        delete = str.maketrans(intab, outab)
+        self.sentence = self.sentence.translate(delete)
+
+    def delete_spaces(self, sentence):
+        remove_spaces = sentence.strip()
+        return remove_spaces
 
     def remove_stop_words(self):
         """
@@ -27,6 +34,8 @@ class Parser:
 
         cleaned_words = []
         # remove the stop_words from the sent
-        for word in stop_words:
+        for word in self.sentence.split():
             if word not in stop_words:
                 cleaned_words.append(word)
+        self.sentence = " ".join(cleaned_words)
+            

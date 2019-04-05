@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from app.parser import Parser
+from app.parser import Parser_Question
 import re
 
 
