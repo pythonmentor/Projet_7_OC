@@ -25,13 +25,14 @@ class Parser_Question:
         return self.sentence
 
     def remove_accents(self, sentence):
-        print("return")
-        sentence = str.maketrans("éèêëãàäâåîïìöôòõñûüÿ", "eeeeaaaaaiiioooonuuy")
-        "éèêëãàäâåîïìöôòõñûüÿ".translate(sentence)
-        return sentence
+        intab = "éèêëãàäâåîïìöôòõñûüÿ"
+        outab = "eeeeaaaaaiiioooonuuy"
+        delete = str.maketrans(intab, outab)
+        self.sentence = self.sentence.translate(delete)
+        return self.sentence
 
     def delete_spaces(self, sentence):
-        remove_spaces = sentence.strip().replace("  ", " ")
+        remove_spaces = sentence.strip().replace("  ", " ").replace("'", " ")
         return remove_spaces
 
     def remove_stop_words(self):
@@ -40,11 +41,10 @@ class Parser_Question:
         """
         with open('stop_words.json', 'r') as f:
             stop_words = json.load(f)
-
+            
         cleaned_words = []
-        # remove the stop_words from the sent
+
         for word in self.sentence.split():
             if word not in stop_words:
                 cleaned_words.append(word)
         self.sentence = " ".join(cleaned_words)
-            
