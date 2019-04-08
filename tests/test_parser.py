@@ -14,9 +14,12 @@ class TestParser:
         assert ab.delete_spaces("   bla bla   ") == "bla bla"
  
     def test_remove_special(self):
-        ab = parser.Parser_Question(",?;.:/!-_")
-        assert ab.remove_special(",?;.:/!-_") == "         "
+        ab = parser.Parser_Question(",?;.:/!-*+%$€_£¤=@|°}]¨[(){'#~&²")
+        assert ab.remove_special(",?;.:/!-*+%$€_£¤=@|°}]¨[(){'#~&²") == "                                "
 
     def test_remove_accents(self):
         ab = parser.Parser_Question("éèêëãàäâåîïìöôòõñûüÿ")
         assert ab.remove_accents("éèêëãàäâåîïìöôòõñûüÿ") == "eeeeaaaaaiiioooonuuy"
+
+    def test_remove_stop_words(self):
+        pass

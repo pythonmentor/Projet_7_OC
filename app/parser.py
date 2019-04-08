@@ -18,8 +18,8 @@ class Parser_Question:
     def remove_special(self, sentence):
         """
         """
-        intab = ",?;.:/!-_"
-        outab = "         "
+        intab = ",?;.:/!-*+%$€_£¤=@|°}]¨[(){'#~&²"
+        outab = "                                "
         delete = str.maketrans(intab, outab)
         self.sentence = self.sentence.translate(delete)
         return self.sentence
@@ -41,7 +41,7 @@ class Parser_Question:
         """
         with open('stop_words.json', 'r') as f:
             stop_words = json.load(f)
-            
+
         cleaned_words = []
 
         for word in self.sentence.split():
