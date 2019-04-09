@@ -2,6 +2,8 @@
 from app.parser import Parser_Question
 import re
 
+# -tc- Attention à ne pas envoyer le répertoire env/ sur Github!
+
 
 class GrandPyBot():
     """

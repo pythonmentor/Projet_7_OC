@@ -1,5 +1,10 @@
 import json
 
+# -tc- Prochaine étape: utiliser la méthode clean() pour nettoyer des questions
+# -tc- exemples et envoyer le résultat de ce nettoyage à l'api de google
+# -tc- maps pour voir si le nettoyage est suffisant.
+
+# -tc- Plutôt QuestionParser. Ne pas utiliser de _ dans les noms de classe
 class Parser_Question:
 
     def __init__(self, sentence):
@@ -7,6 +12,8 @@ class Parser_Question:
 
     def clean(self):
         self.transform_to_lowercase()
+        # -tc- ces appels n'exécutent pas les méthodes. Il faut des () pour
+        # -tc- que l'exécution soit effective.
         self.remove_special
         self.remove_accents
         self.delete_spaces
@@ -15,7 +22,7 @@ class Parser_Question:
         self.sentence = self.sentence.lower()
         return self.sentence
 
-    def remove_special(self, sentence):
+    def remove_special(self):
         """
         """
         intab = ",?;.:/!-*+%$€_£¤=@|°}]¨[(){'#~&²"
@@ -48,3 +55,4 @@ class Parser_Question:
             if word not in stop_words:
                 cleaned_words.append(word)
         self.sentence = " ".join(cleaned_words)
+
